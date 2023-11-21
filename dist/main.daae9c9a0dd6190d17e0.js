@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("My name is",":",{a:1,b:2,c:3}),console.log("Мне: ".concat(48," года ))"))})();
