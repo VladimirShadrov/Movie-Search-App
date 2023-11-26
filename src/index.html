@@ -5,5 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Search App</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main">
+      <div class="search">
+        <input class="js-film-name-input search__film-name-input" type="text" placeholder="Название фильма" />
+        <button class="js-search-btn search__btn">Найти</button>
+      </div>
+      <div class="js-film-list film-list">
+        <!-- Добавить если ничего не найдено -->
+        <div class="not-found hidden">Фильмы не найдены</div>
+
+        <div class="film">
+          <div class="film__image">
+            <img class="image" src="./assets/images/poster-small.png" alt="poster" />
+          </div>
+          <div class="film__description">
+            <h3 class="film__title">Batman Begins</h3>
+            <div class="film__year">2005</div>
+            <div class="film__type">Фильм</div>
+          </div>
+        </div>
+
+        <div class="film">
+          <div class="film__image">
+            <img class="image" src="./assets/images/poster-small.png" alt="poster" />
+          </div>
+          <div class="film__description">
+            <h3 class="film__title">Batman Begins</h3>
+            <div class="film__year">2005</div>
+            <div class="film__type">Сериал</div>
+          </div>
+        </div>
+
+        <div class="film">
+          <div class="film__image">
+            <img class="image" src="./assets/images/poster-small.png" alt="poster" />
+          </div>
+          <div class="film__description">
+            <h3 class="film__title">Batman Begins</h3>
+            <div class="film__year">2005</div>
+            <div class="film__type">Игра</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail">
+      <a href="/" class="breadcrumb"> <- Назад к поиску </a>
+
+      <div class="film">
+        <div class="film__preview">
+          <div class="film__image">
+            <img src="./assets/images/poster-big.png" alt="film-image" />
+          </div>
+          <div class="film__details">
+            <h1 class="title">Batman Begins</h1>
+            <div class="param">
+              <span class="param__option">Год:</span>
+              <span class="param__value">2005</span>
+            </div>
+            <div class="param">
+              <span class="param__option">Рейтинг:</span>
+              <span class="param__value">PG-13</span>
+            </div>
+            <div class="param">
+              <span class="param__option">Дата выхода:</span>
+              <span class="param__value">15 june 2005</span>
+            </div>
+            <div class="param">
+              <span class="param__option">Продолжительность:</span>
+              <span class="param__value">140 минут</span>
+            </div>
+            <div class="param">
+              <span class="param__option">Жанр:</span>
+              <span class="param__value">Action, Crime, Drama</span>
+            </div>
+            <div class="param">
+              <span class="param__option">Режиссер:</span>
+              <span class="param__value">Christopher Nolan</span>
+            </div>
+            <div class="param">
+              <span class="param__option">Сценарий:</span>
+              <span class="param__value">Bob Kane, David S. Goyer, Christopher Nolan</span>
+            </div>
+            <div class="param">
+              <span class="param__option">Актеры:</span>
+              <span class="param__value">Christian Bale, Michael Caine, Ken Watanabe</span>
+            </div>
+          </div>
+        </div>
+        <div class="film-description">
+          After witnessing his parents' death, Bruce learns the art of fighting to confront injustice. When he returns to Gotham as Batman, he must
+          stop a secret society that intends to destroy the city.
+        </div>
+      </div>
+    </div>
+    <div class="loader-wrapper hidden">
+      <div class="loader"></div>
+    </div>
+  </body>
 </html>

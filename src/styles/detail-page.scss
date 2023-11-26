@@ -1,0 +1,147 @@
+@import './variables.scss';
+
+.detail {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 12px;
+  padding-top: 50px;
+
+  @media (max-width: 550px) {
+    padding-top: 30px;
+  }
+
+  .breadcrumb {
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: 700;
+    color: $black;
+    transition: all 0.2s;
+    margin-bottom: 100px;
+    display: inline-block;
+
+    &:hover {
+      color: $link-hover;
+    }
+
+    @media (max-width: 1100px) {
+      font-size: 25px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 550px) {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .film__preview {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 74px;
+
+    @media (max-width: 1100px) {
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 550px) {
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+
+    .film__image {
+      max-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 90px;
+
+      @media (max-width: 1100px) {
+        margin-right: 25px;
+      }
+
+      @media (max-width: 550px) {
+        margin-right: 0;
+        margin-bottom: 16px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .film__details {
+      flex-grow: 1;
+
+      @media (max-width: 550px) {
+        width: 100%;
+      }
+
+      .title {
+        font-size: 50px;
+        font-weight: 700;
+        margin-bottom: 22px;
+        position: relative;
+        top: -10px;
+
+        @media (max-width: 1100px) {
+          font-size: 35px;
+          margin-bottom: 12px;
+          top: -8px;
+        }
+
+        @media (max-width: 550px) {
+          top: 0;
+          margin-bottom: 16px;
+          font-size: 28px;
+        }
+      }
+
+      .param {
+        font-size: 30px;
+        display: flex;
+        margin-bottom: 20px;
+
+        @media (max-width: 1100px) {
+          font-size: 20px;
+          margin-bottom: 8px;
+        }
+
+        @media (max-width: 550px) {
+          font-size: 18px;
+          margin-bottom: 6px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .param__option {
+          margin-right: 24px;
+
+          @media (max-width: 550px) {
+            margin-right: 8px;
+          }
+        }
+
+        .param__value {
+          color: $light-blue;
+        }
+      }
+    }
+  }
+
+  .film-description {
+    font-size: 30px;
+    line-height: normal;
+    max-width: 960px;
+    margin: 0 auto;
+
+    @media (max-width: 1100px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 550px) {
+      font-size: 18px;
+    }
+  }
+}
