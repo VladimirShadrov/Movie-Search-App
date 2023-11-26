@@ -1,0 +1,15 @@
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    text-align: center;
+    font-size: 30px;
+
+    @media (max-width: 550px) {
+      font-size: 25px;
+    }
+  }
+}
