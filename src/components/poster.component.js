@@ -1,4 +1,4 @@
-export class Details {
+export class Poster {
   constructor({ rootElement, router }) {
     this.$el = rootElement;
     this.router = router;

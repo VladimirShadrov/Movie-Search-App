@@ -1,4 +1,4 @@
-import { Details } from '../components/detail.component';
+import { Poster } from '../components/poster.component';
 import { Main } from '../components/main.component';
 
 export const ROUTES = [
@@ -9,7 +9,7 @@ export const ROUTES = [
   },
   {
     path: '/detail',
-    component: Details,
+    component: Poster,
     rootElement: document.querySelector('.detail'),
   },
 ];
