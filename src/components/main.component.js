@@ -1,4 +1,5 @@
 import { Search } from './search.component';
+import { FilmList } from './list.component';
 
 export class Main {
   constructor({ rootElement, router }) {
@@ -6,13 +7,6 @@ export class Main {
     this.router = router;
 
     this.init();
-
-    //========== TEMP ==================
-    this.$films = this.$el.querySelectorAll('.film');
-    this.$films.forEach((film) => {
-      film.addEventListener('click', () => this.router.navigate(film.dataset.route));
-    });
-    //========== TEMP ==================
   }
 
   init() {
@@ -20,6 +14,7 @@ export class Main {
       input: this.$el.querySelector('.js-search-input'),
       button: this.$el.querySelector('.js-search-btn'),
     });
+    new FilmList(this.$el.querySelector('.js-film-list'), this.router);
   }
 
   destroy() {

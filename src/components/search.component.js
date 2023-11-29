@@ -31,7 +31,7 @@ export class Search {
       if (response.ok) {
         const filmData = await response.json();
 
-        if (filmData.Response) {
+        if (filmData.Response === 'True') {
           this.eventEmitter.emit('sendFilmsList', filmData.Search);
         } else {
           this.eventEmitter.emit('sendFilmsList', false);
