@@ -45,7 +45,7 @@ export class FilmList {
         });
         this.$el.append(film);
       });
-
+    } else {
       this.$el.append(this.createListElements(data));
     }
   }

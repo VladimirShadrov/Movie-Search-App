@@ -12,6 +12,7 @@ module.exports = {
   output: {
     filename: devMode ? 'main.js' : 'main.[hash].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true,
   },
   module: {
@@ -42,7 +43,7 @@ module.exports = {
       filename: devMode ? 'index.css' : 'index.[hash].css',
     }),
     new CopyPlugin({
-      patterns: [{ from: 'src/assets', to: '../assets' }],
+      patterns: [{ from: 'src/assets', to: 'assets' }],
     }),
   ],
   devServer: {

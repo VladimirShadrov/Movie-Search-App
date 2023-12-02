@@ -3,6 +3,7 @@ export class NotFound {
     this.$el = rootElement;
     this.router = router;
   }
+  init() {}
   destroy() {
     this.$el.remove();
   }
