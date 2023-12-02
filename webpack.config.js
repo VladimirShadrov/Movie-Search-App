@@ -43,7 +43,10 @@ module.exports = {
       filename: devMode ? 'index.css' : 'index.[hash].css',
     }),
     new CopyPlugin({
-      patterns: [{ from: 'src/assets', to: 'assets' }],
+      patterns: [
+        { from: 'src/assets', to: 'assets' },
+        { from: 'src/_redirect', to: '.' },
+      ],
     }),
   ],
   devServer: {
