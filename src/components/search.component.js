@@ -69,7 +69,7 @@ export class Search {
     const loader = new Loader();
 
     try {
-      const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=${inputValue}`);
+      const response = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&s=${inputValue}`);
       if (response.ok) {
         const filmData = await response.json();
 
