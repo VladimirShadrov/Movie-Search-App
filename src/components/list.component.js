@@ -1,6 +1,13 @@
 import { eventEmitter } from '../libs/eventEmitter';
 
+/**
+ * Класс списка фильмов
+ */
 export class FilmList {
+  /**
+   * @param {HTMLElement} container - Корневой элемент
+   * @param {Object} router - Инстанс класса Роутер
+   */
   constructor(container, router) {
     this.$el = container;
     this.router = router;
@@ -8,14 +15,24 @@ export class FilmList {
     this.renderList = this.renderList.bind(this);
   }
 
+  /**
+   * Подписка на события
+   */
   init() {
-    eventEmitter.subscribe('sendFilmsList', this.renderList);
+    eventEmitter.subscribe('searchUpdated', this.renderList);
   }
 
+  /**
+   * Отписка от событий
+   */
   destroy() {
-    eventEmitter.unsubscribe('sendFilmsList', this.renderList);
+    eventEmitter.unsubscribe('searchUpdated', this.renderList);
   }
 
+  /**
+   * Хендлер отрисовки списка
+   * @param {Object[]} data - Объект с данными для отрисовки списка
+   */
   renderList(data) {
     this.$el.innerHTML = '';
 
@@ -33,6 +50,11 @@ export class FilmList {
     }
   }
 
+  /**
+   * Создание HTML карточки фильма
+   * @param {Object} data - Данные для заполнения карточки
+   * @returns {HTMLElement} - HTML карточки фильма
+   */
   createListElements(data) {
     const parser = new DOMParser();
 

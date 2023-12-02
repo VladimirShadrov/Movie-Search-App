@@ -1,11 +1,23 @@
 import { Loader } from './loader.component';
 import { eventEmitter } from '../libs/eventEmitter';
 
+/**
+ * Класс блока поиска
+ */
 export class Search {
+  /**
+   * @param {HTMLElement} input
+   * @param {HTMLElement} button
+   */
   constructor({ input, button }) {
     this.$input = input;
     this.$searchButton = button;
   }
+  /**
+   * Инициализация компонента
+   * Привязка контекста к хендлерам
+   * Добавление слушателей
+   */
   init() {
     this.getFilmsList = this.getFilmsList.bind(this);
     this.handleInputEvent = this.handleInputEvent.bind(this);
@@ -13,20 +25,32 @@ export class Search {
     this.addListeners();
   }
 
+  /**
+   * Удаление компонента
+   */
   destroy() {
     this.removeListeners();
   }
 
+  /**
+   * Добавление слушателей
+   */
   addListeners() {
     this.$searchButton.addEventListener('click', this.getFilmsList);
     this.$input.addEventListener('input', this.handleInputEvent);
   }
 
+  /**
+   * Отписка от слушателей
+   */
   removeListeners() {
     this.$searchButton.removeEventListener('click', this.getFilmsList);
     this.$input.removeEventListener('input', this.handleInputEvent);
   }
 
+  /**
+   * Хендлер для события "input"
+   */
   handleInputEvent() {
     if (this.$input.value.trim()) {
       this.disableButton(false);
@@ -35,6 +59,9 @@ export class Search {
     }
   }
 
+  /**
+   * Хендлер для события "click" на кнопке поиска
+   */
   async getFilmsList() {
     const apikey = '7eb915aa';
     const inputValue = this.$input.value.trim();
@@ -47,9 +74,9 @@ export class Search {
         const filmData = await response.json();
 
         if (filmData.Response === 'True') {
-          eventEmitter.emit('sendFilmsList', filmData.Search);
+          eventEmitter.emit('searchUpdated', filmData.Search);
         } else {
-          eventEmitter.emit('sendFilmsList', false);
+          eventEmitter.emit('searchUpdated', false);
         }
 
         loader.hide();
@@ -60,11 +87,18 @@ export class Search {
     }
   }
 
+  /**
+   * Очискта текстового поля
+   */
   clearInput() {
     this.$input.value = '';
     this.disableButton(true);
   }
 
+  /**
+   * Управление доступностью кнопки поиска
+   * @param {Boolean} value
+   */
   disableButton(value) {
     this.$searchButton.disabled = value;
   }

@@ -7,6 +7,9 @@ export class Main {
     this.router = router;
   }
 
+  /**
+   * Инициализация компонентов страницы
+   */
   init() {
     this.search = new Search({
       input: this.$el.querySelector('.js-search-input'),
@@ -17,12 +20,18 @@ export class Main {
     this.filmList.init();
   }
 
+  /**
+   * Удаление компонентов страницы
+   */
   destroy() {
     this.search.destroy();
     this.filmList.destroy();
     this.$el.remove();
   }
 
+  /**
+   * HTML главной страцицы
+   */
   get element() {
     return this.$el;
   }

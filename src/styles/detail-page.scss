@@ -17,12 +17,17 @@
     font-size: 40px;
     font-weight: 700;
     color: $black;
+    display: inline-flex;
+    align-items: center;
     transition: all 0.2s;
     margin-bottom: 100px;
-    display: inline-block;
 
     &:hover {
       color: $link-hover;
+
+      & svg {
+        fill: $link-hover;
+      }
     }
 
     @media (max-width: 1100px) {
@@ -33,6 +38,20 @@
     @media (max-width: 550px) {
       font-size: 20px;
       margin-bottom: 30px;
+    }
+
+    & svg {
+      transition: all 0.2s;
+      transform: scale(2);
+      margin-right: 8px;
+
+      @media (max-width: 1100px) {
+        transform: scale(1.5);
+      }
+
+      @media (max-width: 550px) {
+        transform: scale(1.2);
+      }
     }
   }
 
