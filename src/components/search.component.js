@@ -21,6 +21,7 @@ export class Search {
   init() {
     this.getFilmsList = this.getFilmsList.bind(this);
     this.handleInputEvent = this.handleInputEvent.bind(this);
+    this.handleKeydownEvent = this.handleKeydownEvent.bind(this);
 
     this.addListeners();
   }
@@ -38,6 +39,7 @@ export class Search {
   addListeners() {
     this.$searchButton.addEventListener('click', this.getFilmsList);
     this.$input.addEventListener('input', this.handleInputEvent);
+    this.$input.addEventListener('keydown', this.handleKeydownEvent);
   }
 
   /**
@@ -46,6 +48,7 @@ export class Search {
   removeListeners() {
     this.$searchButton.removeEventListener('click', this.getFilmsList);
     this.$input.removeEventListener('input', this.handleInputEvent);
+    this.$input.removeEventListener('keydown', this.handleKeydownEvent);
   }
 
   /**
@@ -56,6 +59,12 @@ export class Search {
       this.disableButton(false);
     } else {
       this.disableButton(true);
+    }
+  }
+
+  handleKeydownEvent(event) {
+    if (event.key === 'Enter') {
+      this.getFilmsList();
     }
   }
 
