@@ -5,19 +5,21 @@ export class Main {
   constructor({ rootElement, router }) {
     this.$el = rootElement;
     this.router = router;
-
-    this.init();
   }
 
   init() {
-    new Search({
+    this.search = new Search({
       input: this.$el.querySelector('.js-search-input'),
       button: this.$el.querySelector('.js-search-btn'),
     });
-    new FilmList(this.$el.querySelector('.js-film-list'), this.router);
+    this.filmList = new FilmList(this.$el.querySelector('.js-film-list'), this.router);
+    this.search.init();
+    this.filmList.init();
   }
 
   destroy() {
+    this.search.destroy();
+    this.filmList.destroy();
     this.$el.remove();
   }
 

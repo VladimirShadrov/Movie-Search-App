@@ -5,19 +5,34 @@ export class Search {
   constructor({ input, button }) {
     this.$input = input;
     this.$searchButton = button;
-    this.eventEmitter = eventEmitter;
+  }
+  init() {
+    this.getFilmsList = this.getFilmsList.bind(this);
+    this.handleInputEvent = this.handleInputEvent.bind(this);
 
     this.addListeners();
   }
+
+  destroy() {
+    this.removeListeners();
+  }
+
   addListeners() {
-    this.$searchButton.addEventListener('click', this.getFilmsList.bind(this));
-    this.$input.addEventListener('input', () => {
-      if (this.$input.value.trim()) {
-        this.disableButton(false);
-      } else {
-        this.disableButton(true);
-      }
-    });
+    this.$searchButton.addEventListener('click', this.getFilmsList);
+    this.$input.addEventListener('input', this.handleInputEvent);
+  }
+
+  removeListeners() {
+    this.$searchButton.removeEventListener('click', this.getFilmsList);
+    this.$input.removeEventListener('input', this.handleInputEvent);
+  }
+
+  handleInputEvent() {
+    if (this.$input.value.trim()) {
+      this.disableButton(false);
+    } else {
+      this.disableButton(true);
+    }
   }
 
   async getFilmsList() {
@@ -32,9 +47,9 @@ export class Search {
         const filmData = await response.json();
 
         if (filmData.Response === 'True') {
-          this.eventEmitter.emit('sendFilmsList', filmData.Search);
+          eventEmitter.emit('sendFilmsList', filmData.Search);
         } else {
-          this.eventEmitter.emit('sendFilmsList', false);
+          eventEmitter.emit('sendFilmsList', false);
         }
 
         loader.hide();

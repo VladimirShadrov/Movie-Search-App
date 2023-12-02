@@ -38,6 +38,7 @@ export class Router {
       rootElement: route.rootElement,
       router: this,
     });
+    this.currentComponent.init();
     this.render();
   }
 

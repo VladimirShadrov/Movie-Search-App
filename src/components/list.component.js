@@ -4,13 +4,16 @@ export class FilmList {
   constructor(container, router) {
     this.$el = container;
     this.router = router;
-    this.eventEmitter = eventEmitter;
 
-    this.subscribeOnEvent();
+    this.renderList = this.renderList.bind(this);
   }
 
-  subscribeOnEvent() {
-    this.eventEmitter.subscribe('sendFilmsList', this.renderList.bind(this));
+  init() {
+    eventEmitter.subscribe('sendFilmsList', this.renderList);
+  }
+
+  destroy() {
+    eventEmitter.unsubscribe('sendFilmsList', this.renderList);
   }
 
   renderList(data) {
@@ -19,10 +22,13 @@ export class FilmList {
     if (data) {
       data.forEach((filmData) => {
         const film = this.createListElements(filmData);
-        film.addEventListener('click', () => this.router.navigate(film.dataset.route));
+        film.addEventListener('click', () => {
+          this.router.navigate(film.dataset.route);
+          eventEmitter.emit('clickFilmItem', film.dataset.filmId);
+        });
         this.$el.append(film);
       });
-    } else {
+
       this.$el.append(this.createListElements(data));
     }
   }
